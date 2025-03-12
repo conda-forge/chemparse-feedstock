@@ -1,5 +1,5 @@
 {% set name = "chemparse" %}
-{% set version = "0.3.1" %}
+{% set version = "0.3.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/chemparse-{{ version }}.tar.gz
-  sha256: e7ad0b7522b091c27eaca5821ae44142cfff75a9ef71cf7b063106a57ffee337
+  sha256: f46e24081f69c3bddd03447a1ab0370c286607c6b6c146b1647f6d57beb26c3d
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
