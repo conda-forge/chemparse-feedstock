@@ -1,0 +1,45 @@
+schema_version: 1
+
+context:
+  name: chemparse
+  version: "0.3.2"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/chemparse-${{ version }}.tar.gz
+  sha256: f46e24081f69c3bddd03447a1ab0370c286607c6b6c146b1647f6d57beb26c3d
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+
+tests:
+  - python:
+      imports:
+        - chemparse
+      pip_check: true
+      python_version:
+        - ${{ python_min }}
+        - "*"
+
+about:
+  summary: Chemical formula parser
+  license: MIT
+  license_file: LICENSE.txt
+  homepage: https://github.com/gmboyer/chemparse
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
